@@ -4,6 +4,11 @@ import "./style.css";
 // single selection
 // multiple selection
 
+/**
+ * * 1) Change icon + to - for multi selection
+ *
+ */
+
 export default function Accordion() {
 	const [selected, setSelected] = useState(null);
 	const [enableMultiSelection, setEnableMultiSelection] = useState(false);
