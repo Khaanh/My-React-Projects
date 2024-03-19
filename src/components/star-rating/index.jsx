@@ -20,6 +20,10 @@ export default function StarRating({ numberOfStars = 5 }) {
 
 	return (
 		<div className="star-rating">
+			<h1>
+				Thank you for your mark:
+				<span> {hover} </span>
+			</h1>
 			{[...Array(numberOfStars)].map((_, index) => {
 				index += 1;
 				return (
