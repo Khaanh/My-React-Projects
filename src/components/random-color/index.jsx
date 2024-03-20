@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
+import { FaRegCopy } from "react-icons/fa";
+import "./style.css";
 
 /**
- * * 1) Add generated color for buttons & style buttons
+ * * 1) Add generated color for buttons & style buttons +
  * * 2) Make function copy generated color
  */
 
 export default function RandomColor() {
 	const [typeOfColor, setTypeOfColor] = useState("hex");
 	const [color, setColor] = useState("#000000");
+	const [valueOfColor, setValueOfColor] = useState(null);
+	const [copied, setCopied] = useState(false);
+
+	const onCopy = () => {
+		setCopied(true);
+		setValueOfColor(color);
+		// console.log(valueOfColor);
+	};
 
 	const randomColorUtility = (length) => {
 		return Math.floor(Math.random() * length);
@@ -111,15 +122,18 @@ export default function RandomColor() {
 						position: "relative",
 					}}
 				>
-					<button
-						style={{
-							position: "absolute",
-							top: "0",
-							right: "0",
-						}}
-					>
-						Copy
-					</button>
+					{/* Copy Button*/}
+					<CopyToClipboard onCopy={onCopy} text={color}>
+						<button className="btn-copy">
+							<FaRegCopy size={34} />
+							<span
+								className={copied ? "notification is-active" : "notification"}
+							>
+								{valueOfColor} is copied!
+							</span>
+						</button>
+					</CopyToClipboard>
+
 					<h3
 						style={{
 							marginBottom: "0px",
@@ -128,6 +142,7 @@ export default function RandomColor() {
 					>
 						{typeOfColor === "rgb" ? "RGB Color" : "HEX Color"}
 					</h3>
+
 					<h1
 						style={{
 							marginBottom: "0px",
