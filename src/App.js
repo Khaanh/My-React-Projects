@@ -11,10 +11,10 @@ function App() {
 			{/* <Accordion /> */}
 
 			{/* Random color component */}
-			{/* <RandomColor /> */}
+			<RandomColor />
 
 			{/* Star rating */}
-			<StarRating numberOfStars={10} />
+			{/* <StarRating numberOfStars={10} /> */}
 		</div>
 	);
 }

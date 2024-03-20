@@ -53,9 +53,41 @@ export default function RandomColor() {
 					justifyContent: "center",
 				}}
 			>
-				<button onClick={() => setTypeOfColor("hex")}>Create HEX color</button>
-				<button onClick={() => setTypeOfColor("rgb")}>Create RGB color</button>
 				<button
+					style={{
+						padding: "8px",
+						borderRadius: "4px",
+						margin: "0 4px",
+						fontSize: "16px",
+						color: "#fff",
+						background: color,
+					}}
+					onClick={() => setTypeOfColor("hex")}
+				>
+					Create HEX color
+				</button>
+				<button
+					style={{
+						padding: "8px",
+						borderRadius: "4px",
+						margin: "0 4px",
+						fontSize: "16px",
+						color: "#fff",
+						background: color,
+					}}
+					onClick={() => setTypeOfColor("rgb")}
+				>
+					Create RGB color
+				</button>
+				<button
+					style={{
+						padding: "8px",
+						borderRadius: "4px",
+						margin: "0 4px",
+						fontSize: "16px",
+						color: "#fff",
+						background: color,
+					}}
 					onClick={
 						typeOfColor === "hex"
 							? handleCreateRandomHexColor
@@ -65,33 +97,46 @@ export default function RandomColor() {
 					Generate Random Color
 				</button>
 			</div>
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					justifyContent: "center",
-					alignItems: "center",
-					color: "#fff",
-					fontSize: "60px",
-					marginTop: "100px",
-				}}
-			>
-				<h3
+			<div>
+				<div
 					style={{
-						marginBottom: "0px",
-						marginTop: "0px",
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: "center",
+						alignItems: "center",
+						color: "#fff",
+						fontSize: "60px",
+						maxWidth: "75%",
+						margin: "100px auto 40px",
+						position: "relative",
 					}}
 				>
-					{typeOfColor === "rgb" ? "RGB Color" : "HEX Color"}
-				</h3>
-				<h1
-					style={{
-						marginBottom: "0px",
-						marginTop: "0px",
-					}}
-				>
-					{color}
-				</h1>
+					<button
+						style={{
+							position: "absolute",
+							top: "0",
+							right: "0",
+						}}
+					>
+						Copy
+					</button>
+					<h3
+						style={{
+							marginBottom: "0px",
+							marginTop: "0px",
+						}}
+					>
+						{typeOfColor === "rgb" ? "RGB Color" : "HEX Color"}
+					</h3>
+					<h1
+						style={{
+							marginBottom: "0px",
+							marginTop: "0px",
+						}}
+					>
+						{color}
+					</h1>
+				</div>
 			</div>
 		</div>
 	);
