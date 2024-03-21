@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FaRegCopy } from "react-icons/fa";
 import "./style.css";
@@ -13,11 +13,9 @@ export default function RandomColor() {
 	const [color, setColor] = useState("#000000");
 	const [valueOfColor, setValueOfColor] = useState(null);
 	const [copied, setCopied] = useState(false);
-
 	const onCopy = () => {
 		setCopied(true);
 		setValueOfColor(color);
-		// console.log(valueOfColor);
 	};
 
 	const randomColorUtility = (length) => {
@@ -31,8 +29,14 @@ export default function RandomColor() {
 		for (let i = 0; i < 6; i++) {
 			hexColor += hex[randomColorUtility(hex.length)];
 		}
-
+		// console.log("handleCreateRandomHexColor: ", color);
 		setColor(hexColor);
+	};
+
+	const removeNotification = () => {
+		setTimeout(() => {
+			setCopied(false);
+		}, 2000);
 	};
 
 	const handleCreateRandomRgbColor = () => {
@@ -41,6 +45,7 @@ export default function RandomColor() {
 		const b = randomColorUtility(256);
 
 		setColor(`rgb${r},${g},${b}`);
+		// console.log("handleCreateRandomRgbColor: ", color);
 	};
 
 	useEffect(() => {
@@ -48,13 +53,17 @@ export default function RandomColor() {
 		else handleCreateRandomHexColor();
 	}, [typeOfColor]);
 
+	useEffect(() => {
+		removeNotification();
+	}, [copied]);
+
 	return (
 		<div
 			style={{
 				width: "100vw",
 				height: "100vh",
 				padding: "20px",
-				background: color,
+				backgroundColor: color,
 				boxSizing: "border-box",
 			}}
 		>
