@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function LoadMoreBtn() {
-	return <button>LoadMoreBtn</button>;
+	return <button>LoadMoreBtns</button>;
 }
