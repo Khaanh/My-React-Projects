@@ -50,45 +50,49 @@ export default function ImageSlider({ url, limit = 5, page = 1 }) {
 	}
 
 	return (
-		<div className="container">
-			<BsArrowLeftCircleFill
-				onClick={handlePrevious}
-				className="arrow arrow-left"
-			/>
+		<div className="image-wrapper">
+			<div className="container">
+				{/* <div className="wrapper"> */}
+				<BsArrowLeftCircleFill
+					onClick={handlePrevious}
+					className="arrow arrow-left"
+				/>
 
-			{images && images.length
-				? images.map((imageItem, index) => (
-						<img
-							key={imageItem.id}
-							alt={imageItem.download_url}
-							src={imageItem.download_url}
-							className={
-								currentSlider === index
-									? "current-image"
-									: "current-image hide-current-image"
-							}
-						/>
-				  ))
-				: null}
-			<BsArrowRightCircleFill
-				onClick={handleNext}
-				className="arrow arrow-right"
-			/>
-			<span className="circle-indicators">
 				{images && images.length
-					? images.map((_, index) => (
-							<button
-								key={index}
-								onClick={() => setCurrentSlider(index)}
+					? images.map((imageItem, index) => (
+							<img
+								key={imageItem.id}
+								alt={imageItem.download_url}
+								src={imageItem.download_url}
 								className={
 									currentSlider === index
-										? "current-indicator"
-										: "current-indicator inactive-indicator"
+										? "current-image"
+										: "current-image hide-current-image"
 								}
-							></button>
+							/>
 					  ))
 					: null}
-			</span>
+				<BsArrowRightCircleFill
+					onClick={handleNext}
+					className="arrow arrow-right"
+				/>
+				<span className="circle-indicators">
+					{images && images.length
+						? images.map((_, index) => (
+								<button
+									key={index}
+									onClick={() => setCurrentSlider(index)}
+									className={
+										currentSlider === index
+											? "current-indicator"
+											: "current-indicator inactive-indicator"
+									}
+								></button>
+						  ))
+						: null}
+				</span>
+				{/* </div> */}
+			</div>
 		</div>
 	);
 }
