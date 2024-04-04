@@ -1,6 +1,7 @@
 import Accordion from "./components/accordion";
 import ImageSlider from "./components/image-slider";
 import LoadMoreBtn from "./components/load-more-btn";
+import QrCodeGenerator from "./components/qr-code-generator";
 import RandomColor from "./components/random-color";
 import StarRating from "./components/star-rating";
 import TreeView from "./components/treeView";
@@ -25,7 +26,10 @@ function App() {
 			{/* <LoadMoreBtn /> */}
 
 			{/* TreeView */}
-			<TreeView menus={menus} />
+			{/* <TreeView menus={menus} /> */}
+
+			{/* QR Code Generator */}
+			<QrCodeGenerator />
 		</div>
 	);
 }
